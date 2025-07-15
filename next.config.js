@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const path = require("path");
+
 const nextConfig = {
   images: {
     domains: [
@@ -6,6 +8,10 @@ const nextConfig = {
       "images.clerk.dev",
       "cdn-icons-png.flaticon.com",
     ],
+  },
+  webpack: (config) => {
+    config.resolve.alias["@"] = path.resolve(__dirname);
+    return config;
   },
 };
 
